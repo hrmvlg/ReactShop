@@ -1,0 +1,10 @@
+nav {
+    padding-inline: 20px;
+}
+
+.content {
+    min-height: calc(100vh - 70px - 64px);
+    padding: 1.5rem 0;
+    width: 70%;
+    margin: auto;
+}
