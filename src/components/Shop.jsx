@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import { API_KEY, API_URL } from '../config';
 import Preloader from './Preloader';
 import GoodsList from "./GoodsList";
+import Cart from './Cart';
 
 export default function Shop() {
 
     const [goods, setGoods] = useState([]);
     const [isLoading, setLoading] = useState(true);
+    const [orders, setOrder] = useState([]);
+
 
     useEffect(function getGoods() {
         fetch(API_URL, {
@@ -21,13 +24,26 @@ export default function Shop() {
             })
     }, [])
 
+    let ordersCopy = Object.assign([], orders);
+
+    const addToCart = (id) => {
+        if (id) {
+            ordersCopy.push(id);
+            setOrder(ordersCopy);
+        }
+    }
+
     return (
         <div className="container">
+            <Cart quantity={orders.length} />
             {
                 isLoading ? (
                     <Preloader />
                 ) : (
-                    <GoodsList goods={goods} />
+                    <GoodsList
+                        goods={goods}
+                        addToCart={addToCart}
+                    />
                 )
             }
         </div>
