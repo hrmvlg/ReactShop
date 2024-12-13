@@ -26,9 +26,9 @@ export default function Shop() {
 
     let ordersCopy = Object.assign([], orders);
 
-    const addToCart = (id) => {
-        if (id) {
-            ordersCopy.push(id);
+    const addToCart = (item) => {
+        if (item) {
+            ordersCopy.push(item);
             setOrder(ordersCopy);
         }
     }

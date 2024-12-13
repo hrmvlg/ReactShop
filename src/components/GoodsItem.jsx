@@ -9,7 +9,7 @@ export default function GoodsItem({ id, name, price, type, image, addToCart }) {
                 <div className="card__footer">
                     <a
                         className="card__button waves-effect waves-light btn light-blue darken-3"
-                        onClick={() => { addToCart(id) }}
+                        onClick={() => { addToCart({ id, name, price }) }}
                     >
                         Купить
                     </a>
