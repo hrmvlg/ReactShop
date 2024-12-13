@@ -1,6 +1,9 @@
 import GoodsItem from "./GoodsItem"
 
 export default function GoodsList({ goods }) {
+
+    if (!goods.length) return <h3>Тут ничего нет 😔</h3>
+
     return (
         <ul className="goods-list">
             {
