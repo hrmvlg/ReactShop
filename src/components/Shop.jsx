@@ -24,12 +24,30 @@ export default function Shop() {
             })
     }, [])
 
-    let ordersCopy = Object.assign([], orders);
-
     const addToCart = (item) => {
-        if (item) {
-            ordersCopy.push(item);
-            setOrder(ordersCopy);
+
+        const itemIndex = orders.findIndex(order => order.id === item.id);
+
+        if (itemIndex < 0) {
+            const newItem = {
+                ...item,
+                amount: 1,
+            }
+            setOrder([...orders, newItem])
+        } else {
+            const newOrder = orders.map((order, index) => {
+                if (index === itemIndex) {
+                    return {
+                        ...order,
+                        amount: order.amount + 1,
+                    }
+                }
+                else {
+                    return item;
+                }
+            })
+
+            setOrder(newOrder);
         }
     }
 
