@@ -1,6 +1,6 @@
 export default function Footer() {
     return (
-        <footer className="page-footer blue-grey lighten-1">
+        <footer className="page-footer light-blue darken-4">
             <div className="footer-copyright">
                 <div className="container">
                     © {new Date().getFullYear()} Olya Khromova
