@@ -1,6 +1,6 @@
 import CartItem from "./CartItem"
 
-export default function CartList({ orders }) {
+export default function CartList({ orders, cartTotal }) {
 
     return (
         <ul className="cart__list">
@@ -17,7 +17,7 @@ export default function CartList({ orders }) {
                     <li className="cart__item-empty">Корзина пуста</li>
                 )
             }
-            <li className="cart__total">Общая стоимость: <span className="cart__total-amount">{0}</span></li>
+            <li className="cart__total">Общая стоимость: <span className="cart__total-amount">{cartTotal}</span></li>
         </ul>
     )
 }

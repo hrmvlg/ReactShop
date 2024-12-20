@@ -11,6 +11,7 @@ export default function Shop() {
     const [isLoading, setLoading] = useState(true);
     const [orders, setOrder] = useState([]);
     const [isCartOpen, setCartOpen] = useState(false);
+    const [cartTotal, setCartTotal] = useState(0);
 
     useEffect(function getGoods() {
         fetch(API_URL, {
@@ -34,10 +35,12 @@ export default function Shop() {
                 ...item,
                 amount: 1,
             }
+            setCartTotal(cartTotal + newItem.price)
             setOrder([...orders, newItem])
         } else {
             const newOrders = orders.map((order, index) => {
                 if (index === itemIndex) {
+                    setCartTotal(cartTotal + order.price)
                     return {
                         ...order,
                         amount: order.amount + 1,
@@ -73,7 +76,11 @@ export default function Shop() {
                 )
             }
             {
-                isCartOpen && <CartList orders={orders} />
+                isCartOpen &&
+                <CartList
+                    orders={orders}
+                    cartTotal={cartTotal}
+                />
             }
         </div>
     )
