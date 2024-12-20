@@ -3,6 +3,7 @@ import { API_KEY, API_URL } from '../config';
 import Preloader from './Preloader';
 import GoodsList from "./GoodsList";
 import Cart from './Cart';
+import CartList from "./CartList";
 
 export default function Shop() {
 
@@ -70,6 +71,9 @@ export default function Shop() {
                         addToCart={addToCart}
                     />
                 )
+            }
+            {
+                isCartOpen && <CartList orders={orders} />
             }
         </div>
     )
