@@ -7,6 +7,8 @@ nav {
     padding: 1.5rem 0;
     width: 70%;
     margin: auto;
+
+    position: relative;
 }
 
 .goods-list {
@@ -41,4 +43,77 @@ nav {
     flex-direction: row;
     justify-content: space-between;
     align-items: center
+}
+
+.cart {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+
+    cursor: pointer;
+    z-index: 5;
+    padding: 1rem;
+
+    user-select: none;
+}
+
+@media (min-width: 767px) {
+    .cart {
+        top: 5rem;
+        bottom: unset;
+    }
+}
+
+.cart__list {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background: white;
+    border: 1px solid gray;
+    border-radius: 20px;
+    position: fixed;
+    width: 700px;
+    height: 500px;
+    z-index: 10;
+
+    padding: 40px;
+    padding-left: 40px !important;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    overflow: scroll;
+
+}
+
+.cart__item {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.cart__item-heading,
+.cart__item-empty {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.cart__item-name {
+    min-width: 400px;
+}
+
+.cart__total {
+    width: 100%;
+    margin-top: 20px;
+    border-top: 1px solid gray;
+    display: flex;
+    justify-content: space-between;
 }
