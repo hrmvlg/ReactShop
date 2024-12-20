@@ -9,7 +9,7 @@ export default function Shop() {
     const [goods, setGoods] = useState([]);
     const [isLoading, setLoading] = useState(true);
     const [orders, setOrder] = useState([]);
-
+    const [isCartOpen, setCartOpen] = useState(false);
 
     useEffect(function getGoods() {
         fetch(API_URL, {
@@ -51,9 +51,16 @@ export default function Shop() {
         }
     }
 
+    const handleCartShow = () => {
+        setCartOpen(!isCartOpen);
+    }
+
     return (
         <div className="container">
-            <Cart quantity={orders.length} />
+            <Cart
+                quantity={orders.length}
+                handleCartShow={handleCartShow}
+            />
             {
                 isLoading ? (
                     <Preloader />
