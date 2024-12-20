@@ -35,7 +35,7 @@ export default function Shop() {
             }
             setOrder([...orders, newItem])
         } else {
-            const newOrder = orders.map((order, index) => {
+            const newOrders = orders.map((order, index) => {
                 if (index === itemIndex) {
                     return {
                         ...order,
@@ -43,11 +43,11 @@ export default function Shop() {
                     }
                 }
                 else {
-                    return item;
+                    return order;
                 }
             })
 
-            setOrder(newOrder);
+            setOrder(newOrders);
         }
     }
 
