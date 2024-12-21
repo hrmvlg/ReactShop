@@ -1,6 +1,12 @@
 import CartItem from "./CartItem"
 
-export default function CartList({ orders, cartTotal }) {
+export default function CartList({ orders, deleteFromCart }) {
+
+    const cartTotal = orders.reduce((sum, order) => {
+        return (sum + order.price * order.amount)
+    }, 0)
+
+    console.log(cartTotal);
 
     return (
         <ul className="cart__list">
@@ -11,6 +17,7 @@ export default function CartList({ orders, cartTotal }) {
                         <CartItem
                             key={item.id}
                             {...item}
+                            deleteFromCart={deleteFromCart}
                         />
                     ))
                 ) : (
