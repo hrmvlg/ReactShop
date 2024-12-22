@@ -1,6 +1,6 @@
 import CartItem from "./CartItem"
 
-export default function CartList({ orders, deleteFromCart }) {
+export default function CartList({ orders, deleteFromCart, updateOrderAmount }) {
 
     const cartTotal = orders.reduce((sum, order) => {
         return (sum + order.price * order.amount)
@@ -18,6 +18,7 @@ export default function CartList({ orders, deleteFromCart }) {
                             key={item.id}
                             {...item}
                             deleteFromCart={deleteFromCart}
+                            updateOrderAmount={updateOrderAmount}
                         />
                     ))
                 ) : (
