@@ -61,6 +61,31 @@ export default function Shop() {
         setCartOpen(!isCartOpen);
     }
 
+    const updateOrderAmount = (value, id) => {
+        const newOrders = orders.map((order) => {
+            if (order.id === id) {
+                if (value === 'inc') {
+                    return {
+                        ...order,
+                        amount: order.amount + 1,
+                    };
+                } else {
+                    if (order.amount <= 1) {
+                        return order;
+                    }
+                    return {
+                        ...order,
+                        amount: order.amount - 1,
+                    };
+                }
+            } else {
+                return order;
+            }
+        });
+
+        setOrders(newOrders);
+    };
+
     return (
         <div className="container">
             <Cart
@@ -82,6 +107,7 @@ export default function Shop() {
                 <CartList
                     orders={orders}
                     deleteFromCart={deleteFromCart}
+                    updateOrderAmount={updateOrderAmount}
                 />
             }
         </div>
