@@ -4,6 +4,7 @@ import Preloader from './Preloader';
 import GoodsList from "./GoodsList";
 import Cart from './Cart';
 import CartList from "./CartList";
+import Alert from "./Alert";
 
 export default function Shop() {
 
@@ -11,6 +12,7 @@ export default function Shop() {
     const [isLoading, setLoading] = useState(true);
     const [orders, setOrders] = useState([]);
     const [isCartOpen, setCartOpen] = useState(false);
+    const [alertName, setAlertName] = useState('');
 
     useEffect(function getGoods() {
         fetch(API_URL, {
@@ -50,6 +52,7 @@ export default function Shop() {
 
             setOrders(newOrders);
         }
+        setAlertName(item.name);
     }
 
     const deleteFromCart = (id) => {
@@ -86,6 +89,10 @@ export default function Shop() {
         setOrders(newOrders);
     };
 
+    const closeAlert = () => {
+        setAlertName('');
+    }
+
     return (
         <div className="container">
             <Cart
@@ -108,6 +115,13 @@ export default function Shop() {
                     orders={orders}
                     deleteFromCart={deleteFromCart}
                     updateOrderAmount={updateOrderAmount}
+                />
+            }
+            {
+                alertName &&
+                <Alert
+                    name={alertName}
+                    closeAlert={closeAlert}
                 />
             }
         </div>
