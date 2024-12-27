@@ -1,5 +1,10 @@
-nav {
+nav,
+footer {
     padding-inline: 20px;
+}
+
+.page-footer {
+    padding: 20px;
 }
 
 .container {
