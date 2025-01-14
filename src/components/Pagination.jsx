@@ -12,24 +12,21 @@ export default function Pagination({ itemsPerPage, totalItems, paginate, current
             {
                 currentPage <= 1 ?
                     <li className="disabled page-arrow">
-                        <a>
-                            <i className="material-icons">chevron_left</i>
-                        </a>
+                        <i className="material-icons">chevron_left</i>
                     </li>
                     :
-                    <li className="waves-effect page-arrow">
-                        <a onClick={() => { paginate(currentPage - 1) }}>
-                            <i className="material-icons">chevron_left</i>
-                        </a>
+                    <li className="waves-effect page-arrow" onClick={() => { paginate(currentPage - 1) }}>
+                        <i className="material-icons">chevron_left</i>
                     </li>
             }
 
             {
                 pageNumbers.map(number => (
-                    <li key={number} className={`page-item waves-effect ${number === currentPage ? 'current-page' : ''}`}>
-                        <a onClick={() => paginate(number)}>
-                            {number}
-                        </a>
+                    <li key={number}
+                        className={`page-item waves-effect ${number === currentPage ? 'current-page' : ''}`}
+                        onClick={() => paginate(number)}
+                    >
+                        {number}
                     </li>
                 ))
             }
@@ -37,15 +34,11 @@ export default function Pagination({ itemsPerPage, totalItems, paginate, current
             {
                 currentPage >= pageNumbers.length ?
                     <li className="disabled page-arrow">
-                        <a>
-                            <i className="material-icons">chevron_right</i>
-                        </a>
+                        <i className="material-icons">chevron_right</i>
                     </li>
                     :
-                    <li className="waves-effect page-arrow">
-                        <a onClick={() => { paginate(currentPage + 1) }}>
-                            <i className="material-icons">chevron_right</i>
-                        </a>
+                    <li className="waves-effect page-arrow" onClick={() => { paginate(currentPage + 1) }}>
+                        <i className="material-icons">chevron_right</i>
                     </li>
             }
 
