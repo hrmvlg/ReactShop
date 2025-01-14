@@ -5,6 +5,7 @@ import GoodsList from "./GoodsList";
 import Cart from './Cart';
 import CartList from "./CartList";
 import Alert from "./Alert";
+import Pagination from './Pagination';
 
 export default function Shop() {
 
@@ -13,6 +14,8 @@ export default function Shop() {
     const [orders, setOrders] = useState([]);
     const [isCartOpen, setCartOpen] = useState(false);
     const [alertName, setAlertName] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage] = useState(12);
 
     useEffect(function getGoods() {
         fetch(API_URL, {
@@ -93,6 +96,14 @@ export default function Shop() {
         setAlertName('');
     }
 
+    const lastGoodIndex = currentPage * itemsPerPage;
+    const firstGoodIndex = lastGoodIndex - itemsPerPage;
+    const currentGoods = goods.slice(firstGoodIndex, lastGoodIndex);
+
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    }
+
     return (
         <div className="container">
             <Cart
@@ -103,10 +114,17 @@ export default function Shop() {
                 isLoading ? (
                     <Preloader />
                 ) : (
-                    <GoodsList
-                        goods={goods}
-                        addToCart={addToCart}
-                    />
+                    <>
+                        <GoodsList
+                            goods={currentGoods}
+                            addToCart={addToCart} />
+                        <Pagination
+                            itemsPerPage={itemsPerPage}
+                            totalItems={goods.length}
+                            paginate={paginate}
+                            currentPage={currentPage}
+                        />
+                    </>
                 )
             }
             {

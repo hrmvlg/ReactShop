@@ -153,3 +153,47 @@ footer {
 .cart__item-amount-value {
     margin: 0 10px;
 }
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 50px;
+    margin-inline: 20px;
+}
+
+.page-arrow {
+    width: 30px;
+    height: 30px;
+}
+
+.page-arrow a {
+    width: 100%;
+    height: 100%;
+    padding: 0 !important;
+}
+
+.page-item {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.page-item a {
+    padding: 0 !important;
+}
+
+.page-arrow:not(.disabled):hover,
+.page-item:not(.current-page):hover {
+    background-color: rgba(1, 88, 155, 0.207);
+}
+
+.current-page,
+.current-page a {
+    background-color: #01579b;
+    color: #fff !important;
+}
