@@ -12,13 +12,13 @@ export default function Pagination({ itemsPerPage, totalItems, paginate, current
             {
                 currentPage <= 1 ?
                     <li className="disabled page-arrow">
-                        <a href="#!">
+                        <a>
                             <i className="material-icons">chevron_left</i>
                         </a>
                     </li>
                     :
                     <li className="waves-effect page-arrow">
-                        <a href="!#" onClick={() => { paginate(currentPage - 1) }}>
+                        <a onClick={() => { paginate(currentPage - 1) }}>
                             <i className="material-icons">chevron_left</i>
                         </a>
                     </li>
@@ -27,7 +27,7 @@ export default function Pagination({ itemsPerPage, totalItems, paginate, current
             {
                 pageNumbers.map(number => (
                     <li key={number} className={`page-item waves-effect ${number === currentPage ? 'current-page' : ''}`}>
-                        <a href="!#" onClick={() => paginate(number)}>
+                        <a onClick={() => paginate(number)}>
                             {number}
                         </a>
                     </li>
@@ -37,13 +37,13 @@ export default function Pagination({ itemsPerPage, totalItems, paginate, current
             {
                 currentPage >= pageNumbers.length ?
                     <li className="disabled page-arrow">
-                        <a href="#!">
+                        <a>
                             <i className="material-icons">chevron_right</i>
                         </a>
                     </li>
                     :
                     <li className="waves-effect page-arrow">
-                        <a href="!#" onClick={() => { paginate(currentPage + 1) }}>
+                        <a onClick={() => { paginate(currentPage + 1) }}>
                             <i className="material-icons">chevron_right</i>
                         </a>
                     </li>
