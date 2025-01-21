@@ -1,4 +1,16 @@
-export default function CartItem({ id, name, price, amount, deleteFromCart, updateOrderAmount }) {
+import { useContext } from 'react';
+import { ShopContext } from '../context';
+
+export default function CartItem(props) {
+
+    const { deleteFromCart, updateOrderAmount } = useContext(ShopContext);
+
+    const {
+        id,
+        name,
+        price,
+        amount
+    } = props;
 
     const handleButtonClick = (value) => {
         updateOrderAmount(value, id);

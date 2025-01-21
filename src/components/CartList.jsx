@@ -1,12 +1,13 @@
-import CartItem from "./CartItem"
+import { useContext } from "react";
+import { ShopContext } from "../context";
+import CartItem from "./CartItem";
 
-export default function CartList({ orders, deleteFromCart, updateOrderAmount }) {
+export default function CartList() {
+    const { orders } = useContext(ShopContext);
 
     const cartTotal = orders.reduce((sum, order) => {
         return (sum + order.price * order.amount)
     }, 0)
-
-    console.log(cartTotal);
 
     return (
         <ul className="cart__list">
@@ -17,8 +18,6 @@ export default function CartList({ orders, deleteFromCart, updateOrderAmount }) 
                         <CartItem
                             key={item.id}
                             {...item}
-                            deleteFromCart={deleteFromCart}
-                            updateOrderAmount={updateOrderAmount}
                         />
                     ))
                 ) : (

@@ -1,5 +1,10 @@
+import { ShopContext } from "../context";
+import { useContext } from "react";
 
-export default function Cart({ quantity = 0, handleCartShow }) {
+export default function Cart(props) {
+
+    const { quantity = 0 } = props;
+    const { handleCartShow } = useContext(ShopContext);
 
     return (
         <div onClick={handleCartShow} className="cart light-blue lighten-3 white-text">

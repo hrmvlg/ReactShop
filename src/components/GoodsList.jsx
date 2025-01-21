@@ -1,13 +1,19 @@
 import GoodsItem from "./GoodsItem"
+import { useContext } from "react"
+import { ShopContext } from "../context"
 
-export default function GoodsList({ goods, addToCart }) {
+export default function GoodsList() {
 
-    if (!goods.length) return <h3>Тут ничего нет 😔</h3>
+    const {
+        currentGoods,
+    } = useContext(ShopContext);
+
+    if (!currentGoods.length) return <h3>Тут ничего нет 😔</h3>
 
     return (
         <ul className="goods-list">
             {
-                goods.map(item => {
+                currentGoods.map(item => {
                     return (
                         <GoodsItem
                             key={item.mainId}
@@ -16,7 +22,6 @@ export default function GoodsList({ goods, addToCart }) {
                             price={item.price.regularPrice}
                             type={item.displayType}
                             image={item.displayAssets[0]?.background ? item.displayAssets[0]?.background : item.displayAssets[0]?.url}
-                            addToCart={addToCart}
                         />)
                 })
             }

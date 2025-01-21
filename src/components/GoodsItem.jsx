@@ -1,4 +1,17 @@
-export default function GoodsItem({ id, name, price, type, image, addToCart }) {
+import { useContext } from "react"
+import { ShopContext } from "../context"
+
+export default function GoodsItem(props) {
+
+    const {
+        id,
+        name,
+        price,
+        type,
+        image
+    } = props;
+
+    const { addToCart } = useContext(ShopContext);
 
     return (
         <li className="card">
